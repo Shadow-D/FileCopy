@@ -27,10 +27,10 @@ public class FileCopy {
 	public static void fileCopy(File source,File target) throws IOException {
 		BufferedInputStream bi=new BufferedInputStream(new FileInputStream(source));
 		BufferedOutputStream bo=new BufferedOutputStream(new FileOutputStream(target));
-		int i;
-		byte[] len=new byte[1024];
-		while ((i=bi.read(len))!=-1) {
-			bo.write(len,0,i);
+		int len;
+		byte[] bs=new byte[1024];
+		while ((len=bi.read(bs))!=-1) {
+			bo.write(bs,0,len);
 		}
 		bo.flush();
 		bi.close();
