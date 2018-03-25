@@ -28,8 +28,9 @@ public class FileCopy {
 		BufferedInputStream bi=new BufferedInputStream(new FileInputStream(source));
 		BufferedOutputStream bo=new BufferedOutputStream(new FileOutputStream(target));
 		int i;
-		while ((i=bi.read())!=-1) {
-			bo.write(i);
+		byte[] len=new byte[1024];
+		while ((i=bi.read(len))!=-1) {
+			bo.write(len,0,i);
 		}
 		bo.flush();
 		bi.close();
